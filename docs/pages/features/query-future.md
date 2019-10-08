@@ -1,7 +1,7 @@
 # QueryFuture
 
 ## Description
-Every time an immediate method like **ToList** or **FirstOrDefault** is invoked on a query, a database round trip is made to retrieve data. While most applications don't have performance issues with making multiple round trips, batching multiple queries into one can be critical for some heavy traffic applications for scalability.
+Every time an immediate method like **ToList** or **FirstOrDefault** is invoked on a query, a database round trip is made to retrieve data. While most applications don't have performance issues with making multiple round trips, batching multiple queries into one can be critical for some heavy traffic applications scalability.
 
 **EF Classic Query Future** opens up all batching future queries features for Entity Framework users.
 
@@ -22,7 +22,7 @@ var ActiveCustomers = context.Customers.Where(x => x.IsActive).Future();
 FiddleHelper.WriteTable("Customers", customers.ToList());		
 FiddleHelper.WriteTable("Active Customers", ActiveCustomers);			
 ```
-[Try it](https://dotnetfiddle.net/DoWJ3t)
+Try it: [NET Framework](https://dotnetfiddle.net/DoWJ3t) | [NET Core](https://dotnetfiddle.net/vMGvuy)
 
 ## Documentation
 
@@ -32,7 +32,7 @@ FiddleHelper.WriteTable("Active Customers", ActiveCustomers);
 
 | Name | Description | Default | Example |
 | :--- | :---------- | :-----: | :------ |
-| `IsEnabled` | Gets or sets if the `QueryFuture` feature is enabled. | true | [Try it](https://dotnetfiddle.net/n6VcfE) |
+| `IsEnabled` | Gets or sets if the `QueryFuture` feature is enabled. | true | [NET Framework](https://dotnetfiddle.net/n6VcfE) / [NET Core](https://dotnetfiddle.net/ezWALV) |
 
 ### QueryFutureEnumerable<TEntityType>
   
@@ -42,10 +42,10 @@ The `QueryFutureEnumerable<TEntityType>` inherit from the `IEnumerable<T>` inter
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `ToArrayAsync()` | Converts this object to an array asynchronous. |  |
-| `ToArrayAsync(CancellationToken cancellationToken)` | Converts this object to an array asynchronous. |  |
-| `ToListAsync()` | Converts this object to a list asynchronous. |  |
-| `ToListAsync(CancellationToken cancellationToken)` | Converts this object to a list asynchronous. |  |
+| `ToArrayAsync()` | Converts this object to an array asynchronous. | [NET Framework](https://dotnetfiddle.net/pg1rnj) / [NET Core](https://dotnetfiddle.net/MljKoE) |
+| `ToArrayAsync(CancellationToken cancellationToken)` | Converts this object to an array asynchronous. | [NET Framework](https://dotnetfiddle.net/RBEL7B) / [NET Core](https://dotnetfiddle.net/EbmY1e) |
+| `ToListAsync()` | Converts this object to a list asynchronous. | [NET Framework](https://dotnetfiddle.net/JYXOMi) / [NET Core](https://dotnetfiddle.net/DGqyL1) |
+| `ToListAsync(CancellationToken cancellationToken)` | Converts this object to a list asynchronous. | [NET Framework](https://dotnetfiddle.net/RQkqUb) / [NET Core](https://dotnetfiddle.net/enqN1i) |
   
 ### QueryFutureValue<TResult>
   
@@ -53,11 +53,11 @@ The `QueryFutureEnumerable<TEntityType>` inherit from the `IEnumerable<T>` inter
 
 | Name | Description | Default | Example |
 | :--- | :---------- | :-----: | :------ |
-| `Value` | Gets the value of the future query. | null | [Try it](https://dotnetfiddle.net/ObIY3v) |
+| `Value` | Gets the value of the future query. | null | [NET Framework](https://dotnetfiddle.net/ObIY3v) / [NET Core](https://dotnetfiddle.net/xjEqrX) |
 
 ###### Methods
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `ValueAsync()` | Gets the value of the future query. |  |
-| `ValueAsync(CancellationToken cancellationToken)` | Gets the value of the future query. |  |
+| `ValueAsync()` | Gets the value of the future query. | [NET Framework](https://dotnetfiddle.net/hJ6VrE) / [NET Core](https://dotnetfiddle.net/r920Fj) |
+| `ValueAsync(CancellationToken cancellationToken)` | Gets the value of the future query. | [NET Framework](https://dotnetfiddle.net/sgbK5g) / [NET Core](https://dotnetfiddle.net/COg8Wi) |

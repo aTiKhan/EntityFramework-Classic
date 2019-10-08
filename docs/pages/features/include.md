@@ -1,9 +1,9 @@
 # Include
 
 ## Description
-The `Include` method let you to add related entities to the query result.
+The `Include` method let you add related entities to the query result.
 
-In EF Classic, the `Include` method doesn't longer return an `IQueryable` but instead an `IncludeDbQuery` that allows you to chain multiple related objects to the query result by using the `AlsoInclude` and `ThenInclude` methods.
+In EF Classic, the `Include` method no longer returns an `IQueryable` but instead an `IncludeDbQuery` that allows you to chain multiple related objects to the query result by using the `AlsoInclude` and `ThenInclude` methods.
 
 ```csharp
 ctx.Customers
@@ -14,7 +14,7 @@ ctx.Customers
 			.AlsoInclude(product => product.Supplier)
 	.ToList();
 ```
-[Try it](https://dotnetfiddle.net/MkpoSo)
+Try it: [NET Framework](https://dotnetfiddle.net/MkpoSo) | [NET Core](https://dotnetfiddle.net/dyWV1T)
 
 ### Note
 - If you want to include items from the same level, use [`AlsoInclude`](also-include.md)
@@ -35,7 +35,7 @@ ctx.OrderDetails
 		.AlsoInclude(product => product.Supplier)
 	.ToList();
 ```
-[Try it](https://dotnetfiddle.net/2XJrc5)
+Try it: [NET Framework](https://dotnetfiddle.net/2XJrc5) | [NET Core](https://dotnetfiddle.net/5g8jcN)
 
-> It's planned to remove this limitation
+> It's planned to remove this limitation.
 

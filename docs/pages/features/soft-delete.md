@@ -13,16 +13,16 @@ public class SoftDeleteEntitiesContext : DbContext
 	public DbSet<SoftDeleteEntity> SoftDeleteEntities { get; set; }
 }
 ```
-[Try it](https://dotnetfiddle.net/pkMR5w)
+Try it: [NET Framework](https://dotnetfiddle.net/pkMR5w) | [NET Core](https://dotnetfiddle.net/dnuxaL)
 
-The soft delete feature can be acheived by using the 'IEFSoftDelete' interface. By default this interface is always added to the manager. Otherwise you can add your own interface and trigger action to perform a soft delete.
+The soft delete feature can be acheived by using the 'IEFSoftDelete' interface. By default, this interface is always added to the manager. Otherwise you can add your own interface and trigger action to perform a soft delete.
 
 The `IEFSoftDelete` interface will handle any entities that has a column named 'IsDeleted' with the boolean type.
 Any entity that inherit this intefaced will be soft deleted instead of being completly deleted when saving changes from a context.
 
 ### Advantage
 
-- Centralize logic in single inteface to handle the soft delete
+- Centralize logic in single interface to handle the soft delete
 - Reduce the chance of missing a soft delete when introducing a new entity
 - Improve development productivity
 
@@ -41,7 +41,7 @@ public class SoftDeleteEntity : IEFSoftDelete
 	public bool AutoDelete { get; set; }
 }
 ```
-[Try it](https://dotnetfiddle.net/bRqZHn)
+Try it: [NET Framework](https://dotnetfiddle.net/bRqZHn) | [NET Core](https://dotnetfiddle.net/n85Yj9)
 
 ### Custom Interface
 You can create an custom soft delete trigger by adding it to the manager
@@ -61,7 +61,7 @@ public class EntityContext : DbContext
 	public DbSet<Customer> Customers { get; set; }
 }
 ```
-[Try it](https://dotnetfiddle.net/8yyF40)
+Try it: [NET Framework](https://dotnetfiddle.net/8yyF40) | [NET Core](https://dotnetfiddle.net/XEKkm0)
 
 ### Enable/Disable Soft Delete Trigger
 You can enable/disable all existing soft delete triggers by using `IsEnabled` on the manager or individual trigger and use with the `EnableTrigger(T)` and `DisableTrigger(T)` methods.
@@ -84,14 +84,14 @@ using (var context = new EntityContext())
 	context.SaveChanges();	
 }
 ```
-[Try it](https://dotnetfiddle.net/7GZbyO)
+Try it: [NET Framework](https://dotnetfiddle.net/7GZbyO) | [NET Core](https://dotnetfiddle.net/ETXTcy)
 
 ## Real Life Scenarios
 
 ### Soft Delete
 Your application uses Soft Delete/Logical Delete to delete entities.
 
-The **Soft Delete** allows you to mark entities as deleted instead of physically deleted them.
+The **Soft Delete** allows you to mark entities as deleted instead of physically deleting them.
 
 ```csharp
 public class EntityContext : DbContext
@@ -122,7 +122,7 @@ public class EntityContext : DbContext
 	}
 }
 ```
-[Try it](https://dotnetfiddle.net/rpWuks)
+Try it: [NET Framework](https://dotnetfiddle.net/rpWuks) | [NET Core](https://dotnetfiddle.net/xTzNsW)
 
 ## Documentation
 
@@ -132,15 +132,15 @@ public class EntityContext : DbContext
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `EntityType` | Gets the `SofDeleteTrigger` entity type. | [Try it](https://dotnetfiddle.net/OtNX16) |
-| `IsEnabled` | Gets if the `SofDeleteTrigger` is enabled. Use `Enable()` and `Disable()` method to change the state. Always return false if the `SoftDeleteTrigger` feature is disabled. | [Try it](https://dotnetfiddle.net/OtNX16) |
+| `EntityType` | Gets the `SofDeleteTrigger` entity type. | [NET Framework](https://dotnetfiddle.net/OtNX16) / [NET Core](https://dotnetfiddle.net/dE8ZC5) |
+| `IsEnabled` | Gets if the `SofDeleteTrigger` is enabled. Use `Enable()` and `Disable()` method to change the state. Always return false if the `SoftDeleteTrigger` feature is disabled. | [NET Framework](https://dotnetfiddle.net/OtNX16) / [NET Core](https://dotnetfiddle.net/9accmh) |
 
 ###### Methods
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `Enable()` | Enable the `SoftDeleteTrigger`. | [Try it](https://dotnetfiddle.net/00reiu) |
-| `Disable()` | Disable the `SoftDeleteTrigger`. | [Try it](https://dotnetfiddle.net/00reiu) |
+| `Enable()` | Enable the `SoftDeleteTrigger`. | [NET Framework](https://dotnetfiddle.net/00reiu) / [NET Core](https://dotnetfiddle.net/k99NFV) |
+| `Disable()` | Disable the `SoftDeleteTrigger`. | [NET Framework](https://dotnetfiddle.net/00reiu) / [NET Core](https://dotnetfiddle.net/k99NFV) |
 
 ### SoftDeleteManager
 
@@ -148,20 +148,20 @@ public class EntityContext : DbContext
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `IsEnabled` | Gets or sets if the `Soft Delete` feature is enabled. | [Try it](https://dotnetfiddle.net/xchNsI) |
+| `IsEnabled` | Gets or sets if the `Soft Delete` feature is enabled. | [NET Framework](https://dotnetfiddle.net/xchNsI) / [NET Core](https://dotnetfiddle.net/gSaNq4) |
 
 ###### Methods
 
 | Name | Description | Example |
 | :--- | :---------- | :------ |
-| `Trigger<TEntityType>(Action<DbContext, TEntityType> action)` | Execute an action when an entity type state is set to Deleted and set the state to modified afterward | [Try it](https://dotnetfiddle.net/eAimu3) |
-| `EnableTrigger<TEntityType>()` | Enable the `SoftDeleteTrigger` with the specified id.  | [Try it](https://dotnetfiddle.net/7GZbyO)  |
-| `DisableTrigger<TEntityType>()` | Disable the `SoftDeleteTrigger` with the specified id. | [Try it](https://dotnetfiddle.net/7GZbyO)  |
-| `Triggers()` | Get a list of `SoftDeleteTrigger`. | [Try it](https://dotnetfiddle.net/OtNX16) |
-| `GetTrigger<TEntityType>()` | Get the `SoftDeleteTrigger` with the specified id. | [Try it](https://dotnetfiddle.net/OtNX16) |
+| `Trigger<TEntityType>(Action<DbContext, TEntityType> action)` | Execute an action when an entity type state is set to Deleted and set the state to modified afterward | [NET Framework](https://dotnetfiddle.net/eAimu3) / [NET Core](https://dotnetfiddle.net/951cjq) |
+| `EnableTrigger<TEntityType>()` | Enable the `SoftDeleteTrigger` with the specified id.  | [NET Framework](https://dotnetfiddle.net/7GZbyO) / [NET Core](https://dotnetfiddle.net/lEuuB3)  |
+| `DisableTrigger<TEntityType>()` | Disable the `SoftDeleteTrigger` with the specified id. | [NET Framework](https://dotnetfiddle.net/7GZbyO) / [NET Core](https://dotnetfiddle.net/lEuuB3)  |
+| `Triggers()` | Get a list of `SoftDeleteTrigger`. | [NET Framework](https://dotnetfiddle.net/OtNX16) / [NET Core](https://dotnetfiddle.net/gXPV1f) |
+| `GetTrigger<TEntityType>()` | Get the `SoftDeleteTrigger` with the specified id. | [NET Framework](https://dotnetfiddle.net/OtNX16) / [NET Core](https://dotnetfiddle.net/7I7ZvK) |
 
 ## Limitations
 
-There can be only one trigger by entity type. If a second trigger try to be added an exception will be raised.
+There can be only one trigger by entity type. If a second trigger tries to be added an exception will be raised.
 
 The SoftDeleteFeature is not supported by the `BulkSynchronize` operation.

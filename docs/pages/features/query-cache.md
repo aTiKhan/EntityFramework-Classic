@@ -20,7 +20,7 @@ var countries1 = context.Countries.Cache().ToList();
 var countries2 = context.Countries.Cache().ToList();
 ```
 
-[Try it](https://dotnetfiddle.net/lXIiex)
+Try it: [NET Framework](https://dotnetfiddle.net/lXIiex) | [NET Core](https://dotnetfiddle.net/7BX0pc)
 
 ## Query Cache Async
 
@@ -35,6 +35,8 @@ var countries1 = await context.Countries.CacheAsync().ConfigureAwait(false);
 // Subsequent calls will take the value from the memory instead
 var countries2 = await context.Countries.CacheAsync().ConfigureAwait(false);
 ```
+
+Try it: [NET Framework](https://dotnetfiddle.net/r7JqVE) | [NET Core](https://dotnetfiddle.net/ZDHgex)
 
 ## Query Cache Query Deferred
 
@@ -56,7 +58,7 @@ var count = context.Countries.DeferredCount().Cache();
 
 Console.WriteLine("Countries Count: " + count);
 ```
-[Try it](https://dotnetfiddle.net/ouZ2wI)
+Try it: [NET Framework](https://dotnetfiddle.net/ouZ2wI) | [NET Core](https://dotnetfiddle.net/3n1pRZ)
 
 Query Deferred supports all Queryable extension methods and overloads.
 
@@ -77,7 +79,7 @@ Console.WriteLine("Countries Count: " + count);
 // Expire all cache entries using the "countries" tag
 QueryCacheManager.ExpireTag("countries");
 ```
-[Try it](https://dotnetfiddle.net/bCEdyg)
+Try it: [NET Framework](https://dotnetfiddle.net/bCEdyg) | [NET Core](https://dotnetfiddle.net/H44EaR)
 
 ## Query Cache Expiration
 
@@ -90,7 +92,7 @@ var options = new CacheItemPolicy() { SlidingExpiration = TimeSpan.FromHours(2)}
 var countries = context.Countries.Cache(options).ToList();			
 FiddleHelper.WriteTable(countries);
 ```
-[Try it](https://dotnetfiddle.net/i2VOeg)
+Try it: [NET Framework](https://dotnetfiddle.net/i2VOeg) | [NET Core](https://dotnetfiddle.net/D4d0pv)
 
 ## Query Cache Control
 
@@ -109,10 +111,10 @@ You can set default policy
 // The query is cached for 2 hours of inactivity
 QueryCacheManager.CacheItemPolicyFactory = () => new CacheItemPolicy() { SlidingExpiration = TimeSpan.FromHours(2) };
 ```
-[Try it](https://dotnetfiddle.net/rKmdXl)
+Try it: [NET Framework](https://dotnetfiddle.net/rKmdXl) | [NET Core](https://dotnetfiddle.net/x3hVfR)
 
 ## Redis Cache (Beta)
-This feature is currently in beta, you can try it but be aware it some code such as parameter order might change when it is officially released.
+This feature is currently in beta, you can try it but be aware that some code such as parameter order might change when it is officially released.
 
 ```csharp
 var connectionMultiplexer =  ConnectionMultiplexer.Connect("127.0.0.1:6379,allowAdmin=true");
